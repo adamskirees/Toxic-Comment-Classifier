@@ -1,2 +1,2 @@
-# ML_Classification
+# Toxic-Comment-Classification
 ML classification model detecting comment spam
