@@ -1,4 +1,11 @@
-pandas>=2.1.4
-numpy>=1.26.2
-scikit-learn>=1.3.2
-matplotlib>=3.8.2
+# Data & Math
+pandas
+numpy
+
+# Machine Learning & NLP
+scikit-learn
+nltk
+
+# Visualization
+matplotlib
+seaborn
