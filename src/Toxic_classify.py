@@ -51,3 +51,35 @@ df['is_toxic'] = df[toxicity_columns].any(axis=1).astype(int)
 
 # Check the balance of your classes
 print(df['is_toxic'].value_counts(normalize=True))
+
+
+################################## FUNCTIONS ################ FUNCTIONS #####################
+### FUNCTION 1.  Text Preprocessing: Cleaning, Tokenizing, Lemmatizing #####################
+def preprocess_text(text):
+    #1. Handle potential empty values from CSV
+    if not isinstance(text, str): 
+        return ""
+
+# 2. Lowercase and strip whitespace
+    text = text.lower().strip()
+    
+    # 3. Remove punctuation and numbers in one pass using regex
+    # [^\w\s] removes punctuation, \d+ removes numbers
+    text = re.sub(r'[^\w\s]|\d+', '', text)
+    
+    # 4. Tokenize and clean in a single list comprehension
+    # thought about word length (e.g., between 2 and 20 chars) - dont wnat long meaningless  words
+    words = [
+        lemmatizer.lemmatize(word) 
+        for word in text.split() 
+        if word not in stop_words and 2 < len(word) < 20
+    ]
+
+    # 5. Join back into a string (Standard for Vectorizers)
+    return ' '.join(words)
+############################################################ End Function 1. ###############
+
+# Run the preprocessing function
+print("Applying preprocessing... this may take a moment.")
+df['clean_text'] = df['comment_text'].apply(preprocess_text)
+print(df[['comment_text', 'clean_text']].head())
