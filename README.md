@@ -59,7 +59,18 @@ pip install -r requirements.txt
 [ ] Deployment (API or Web App)
 
 ⚖️ License
-Distributed under the MIT License. See LICENSE for more information.
+Initially was a kaggle dataset, this version was "cleaned" for assignment through UNISA
+
+🏆 Project Milestone: Multi-Model Evaluation
+In this phase, I developed and compared three distinct architectures to classify toxic comments using a dataset of 150,000+ entries.
+
+Baseline (Logistic Regression + TF-IDF): Established a strong starting point with a 0.76 F1-Score, proving that simple word-frequency models are highly effective for toxicity detection.
+
+Standard Neural Network (Champion): By implementing a Deep Learning model with an Embedding layer and tuning the decision threshold to 0.2, I achieved the best balance with an F1-Score of 0.77 and a significantly higher Precision (0.83).
+
+Word2Vec + NN: Experimented with pre-trained semantic embeddings. While this model achieved the highest Recall (0.81), it proved overly sensitive for this specific use case, resulting in more false positives.
+
+Current Status: The Standard Neural Network is saved as the production-ready model for deployment.
 
 
 ---
